@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-public class Class {
+public class Schedule {
 
     @Id
     private String userId;
@@ -29,7 +29,7 @@ public class Class {
 
     @Override
     public String toString() {
-        return "Class{" +
+        return "Schedule{" +
                 "userId='" + userId + '\'' +
                 ", json='" + json + '\'' +
                 '}';

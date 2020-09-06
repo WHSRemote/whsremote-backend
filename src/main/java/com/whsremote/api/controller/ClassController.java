@@ -21,7 +21,7 @@ public class ClassController {
     @ResponseBody
     public ResponseEntity getClasses(@RequestParam(name = "id") String userId) {
         Class response = repository.findByUserId(userId);
-        String body = "[]";
+        String body = "{}";
         if (response != null) {
             body = response.getJson();
         }
