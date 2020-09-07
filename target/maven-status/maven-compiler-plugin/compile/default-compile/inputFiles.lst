@@ -1,0 +1,9 @@
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/security/JWTAudienceValidator.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/controller/ClassController.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/controller/ScheduleController.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/entity/Class.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/ApiApplication.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/security/SecurityConfiguration.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/repository/ClassRepository.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/repository/ScheduleRepository.java
+/Users/mingle_li/Dropbox/api/src/main/java/com/whsremote/api/entity/Schedule.java

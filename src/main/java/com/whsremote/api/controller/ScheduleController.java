@@ -1,8 +1,6 @@
 package com.whsremote.api.controller;
 
-import com.whsremote.api.entity.Class;
 import com.whsremote.api.entity.Schedule;
-import com.whsremote.api.repository.ClassRepository;
 import com.whsremote.api.repository.ScheduleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
