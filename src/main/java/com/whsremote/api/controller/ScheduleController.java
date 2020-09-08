@@ -26,7 +26,7 @@ public class ScheduleController {
     public ResponseEntity getSchedule(@RequestParam(name = "id") String userId) {
         try {
             Schedule response = repository.findByUserId(userId);
-            String body = "{}";
+            String body = "{\"1\":[],\"2\":[],\"4\":[],\"5\":[]}";
             if (response != null) {
                 body = response.getJson();
             }
