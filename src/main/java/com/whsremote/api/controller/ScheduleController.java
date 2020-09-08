@@ -24,12 +24,17 @@ public class ScheduleController {
     @GetMapping(path="/schedule", produces = "application/json")
     @ResponseBody
     public ResponseEntity getSchedule(@RequestParam(name = "id") String userId) {
-        Schedule response = repository.findByUserId(userId);
-        String body = "{}";
-        if (response != null) {
-            body = response.getJson();
+        try {
+            Schedule response = repository.findByUserId(userId);
+            String body = "{}";
+            if (response != null) {
+                body = response.getJson();
+            }
+            return new ResponseEntity(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity(body, HttpStatus.OK);
+
     }
 
     @PostMapping(path="/schedule", consumes = "application/json", produces = "application/json")
@@ -39,15 +44,19 @@ public class ScheduleController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
-        Schedule existingSchedule = repository.findByUserId(scheduleData.getUserId());
-        if (existingSchedule != null) {
-            existingSchedule.setJson(scheduleData.getJson());
-            repository.save(existingSchedule);
-        } else {
-            repository.save(scheduleData);
-        }
+        try {
+            Schedule existingSchedule = repository.findByUserId(scheduleData.getUserId());
+            if (existingSchedule != null) {
+                existingSchedule.setJson(scheduleData.getJson());
+                repository.save(existingSchedule);
+            } else {
+                repository.save(scheduleData);
+            }
 
-        return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping(path="/schedule/update", produces = "application/json")

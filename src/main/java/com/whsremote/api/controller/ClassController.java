@@ -20,12 +20,16 @@ public class ClassController {
     @GetMapping(path="/classes", produces = "application/json")
     @ResponseBody
     public ResponseEntity getClasses(@RequestParam(name = "id") String userId) {
-        Class response = repository.findByUserId(userId);
-        String body = "{}";
-        if (response != null) {
-            body = response.getJson();
+        try {
+            Class response = repository.findByUserId(userId);
+            String body = "{}";
+            if (response != null) {
+                body = response.getJson();
+            }
+            return new ResponseEntity(body, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity(body, HttpStatus.OK);
     }
 
     @PostMapping(path="/classes", consumes = "application/json", produces = "application/json")
@@ -35,14 +39,18 @@ public class ClassController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
-        Class existingClass = repository.findByUserId(classData.getUserId());
-        if (existingClass != null) {
-            existingClass.setJson(classData.getJson());
-            repository.save(existingClass);
-        } else {
-            repository.save(classData);
-        }
+        try {
+            Class existingClass = repository.findByUserId(classData.getUserId());
+            if (existingClass != null) {
+                existingClass.setJson(classData.getJson());
+                repository.save(existingClass);
+            } else {
+                repository.save(classData);
+            }
 
-        return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
