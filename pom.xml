@@ -82,7 +82,7 @@
           <schemaVersion>V2</schemaVersion>
           <resourceGroup>api-1599490315769-rg</resourceGroup>
           <appName>api-1599490315769</appName>
-          <pricingTier>F1</pricingTier>
+          <pricingTier>B1</pricingTier>
           <region>eastus</region>
           <runtime>
             <os>linux</os>
